@@ -4,7 +4,9 @@
   "description": "Extension that will replace the word 'archives' to 'messages' for slack message links copied to the clipboard",
   "version": "1.0",
   "permissions": [],
-  "service_worker": "background.js",
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
       "matches": ["https://*.slack.com/*"],
