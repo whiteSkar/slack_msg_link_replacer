@@ -5,7 +5,7 @@
   "version": "1.0",
   "permissions": [],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.html"
   },
   "content_scripts": [
     {
