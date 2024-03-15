@@ -5,7 +5,7 @@
   "version": "1.0",
   "permissions": ["clipboardRead", "clipboardWrite"],
   "background": {
-    "service_worker": "replacer.js"
+    "scripts": ["replacer.js"]
   },
   "action": {
     "default_popup": "main.html",
