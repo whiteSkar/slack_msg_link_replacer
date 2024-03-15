@@ -6,7 +6,7 @@
   "permissions": [],
   "background_page": "background.html",
   "content_scripts": {
-    "matches": ["http://*/*", Https://*/*"],
+    "matches": ["http://*/*", "https://*/*"],
     "js": ["oncopy.js"]
   },
   "action": {
