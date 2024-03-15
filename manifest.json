@@ -1,5 +1,5 @@
 {
-  "manifest_version": 1,
+  "manifest_version": 3,
   "name": "Slack Msg Link Replacer Extension",
   "description": "Extension that will replace the word 'archives' to 'messages' for slack message links copied to the clipboard",
   "version": "1.0",
