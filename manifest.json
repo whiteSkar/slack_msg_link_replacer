@@ -1,14 +1,15 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Slack Msg Link Replacer Extension",
   "description": "Extension that will replace the word 'archives' to 'messages' for slack message links copied to the clipboard",
   "version": "1.0",
-  "permissions": ["clipboardRead", "clipboardWrite"],
-  "background": {
-    "scripts": ["replacer.js"],
-    "persistent": false
+  "permissions": [],
+  "background_page": "background.html",
+  "content_scripts": {
+    "matches": ["http://*/*", Https://*/*"],
+    "js": ["oncopy.js"]
   },
-  "browser_action": {
+  "action": {
     "default_popup": "main.html",
     "default_icon": "icon-16.png"
   },
