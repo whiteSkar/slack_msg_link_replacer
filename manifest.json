@@ -5,10 +5,12 @@
   "version": "1.0",
   "permissions": [],
   "background_page": "background.html",
-  "content_scripts": {
-    "matches": ["http://*/*", "https://*/*"],
-    "js": ["oncopy.js"]
-  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["oncopy.js"]
+    }
+  ],
   "action": {
     "default_popup": "main.html",
     "default_icon": "icon-16.png"
