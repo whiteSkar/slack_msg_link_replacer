@@ -7,7 +7,7 @@ document.addEventListener('paste', function(event) {
   }
 
   // Prevent the default paste behavior
-  // event.preventDefault();
+  event.preventDefault();
 
   console.warn("whiteSkar - original clipboardData", clipboardData);
 
