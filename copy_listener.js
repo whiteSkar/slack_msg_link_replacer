@@ -41,8 +41,6 @@ function handleClipboardEvent(event) {
     
     // Remove the input from the document body
     document.body.removeChild(input);
-
-    copyExecuted = false;
   }
 }
 
