@@ -5,7 +5,7 @@ document.addEventListener('paste', function(event) {
 
   // Get the clipboard data
   var clipboardData = (event.clipboardData || window.clipboardData).getData('text');
-  if (!clipboardContent.includes('archives')) {
+  if (!clipboardData.includes('archives')) {
     return
   }
 
