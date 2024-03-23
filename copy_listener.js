@@ -6,6 +6,27 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   }
 });
 
+pasteButton.addEventListener('copy', async () => {
+   try {
+     var input = document.createElement('input');
+  
+     // Position the input off-screen
+     input.style.position = 'absolute';
+     input.style.left = '10px';
+     
+     // Append the input to the document body
+     document.body.appendChild(input);
+     // Focus the input element to ensure the document.execCommand('paste') works
+     input.focus();
+       
+     const text = await navigator.clipboard.readText()
+     input.value = text;
+     console.warn('Text pasted.');
+   } catch (error) {
+     console.warn('Failed to read clipboard');
+   }
+}
+                             
 function replaceTextInClipboard() {
   console.warn("whiteSkar - copy event called with event", event);
   // Create a temporary input element
@@ -23,16 +44,8 @@ function replaceTextInClipboard() {
 
   console.warn("whiteSkar - paste about to be executed");
 
-  try {
-     const text = await navigator.clipboard.readText()
-     input.value = text;
-     console.warn('Text pasted.');
-   } catch (error) {
-     console.warn('Failed to read clipboard', error);
-   }
-  
-  // const pasteResult = document.execCommand('paste')
-  // console.warn('whiteSkar - pasteResult: ', pasteResult);
+  const pasteResult = document.execCommand('paste')
+  console.warn('whiteSkar - pasteResult: ', pasteResult);
 
   // Get the clipboard content from the input value
   var clipboardContent = input.value;
