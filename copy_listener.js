@@ -27,27 +27,34 @@ function removeStringBeforeCursor(stringToRemove) {
   // Get the currently focused element
   var focusedElement = document.activeElement;
 
+  console.warn("whiteSkar - removeStringBeforeCursor - focusedElement", focusedElement);
+
   // Ensure the focused element is an input or textarea
-  if (focusedElement.tagName === 'INPUT' || focusedElement.tagName === 'TEXTAREA') {
+  if (focusedElement && (focusedElement.tagName === 'INPUT' || focusedElement.tagName === 'TEXTAREA')) {
     // Get the current cursor position
     var cursorPosition = focusedElement.selectionStart;
 
     // Get the current text content of the focused element
     var textContent = focusedElement.value;
+    console.warn("whiteSkar - removeStringBeforeCursor - textContent", textContent);
 
     // Find the start index of the nearest occurrence of the string before the cursor
-    var startIndex = textContent.lastIndexOf(stringToRemove, cursorPosition - 1);
+    var startIndex = textContent.lastIndexOf(stringToRemove, cursorPosition - stringToRemove.length);
+    console.warn("whiteSkar - removeStringBeforeCursor - startIndex", startIndex);
 
     // Check if the string is found before the cursor
     if (startIndex !== -1 && startIndex + stringToRemove.length === cursorPosition) {
       // Remove the string from the text content before the cursor
       var modifiedText = textContent.substring(0, startIndex) + textContent.substring(cursorPosition);
+      console.warn("whiteSkar - removeStringBeforeCursor - modifiedText", modifiedText);
 
       // Update the value of the focused element with the modified text content
       focusedElement.value = modifiedText;
 
       // Set the cursor position after the modified text
       focusedElement.setSelectionRange(startIndex, startIndex);
+    } else{
+      console.warn("whiteSkar - removeStringBeforeCursor - did not find string to replace");
     }
   }
 }
