@@ -16,16 +16,18 @@ document.addEventListener('paste', function(event) {
   // Replace the word 'archives' with 'messages' in the clipboard data
   clipboardData = clipboardData.replace('archives', 'messages');
   console.warn("whiteSkar - replaced content", clipboardData);
-
-  // Insert the modified clipboard content into the current selection or focused input field
-  if (window.getSelection) {
-    // For modern browsers that support Selection API
-    var selection = window.getSelection();
-    if (selection.rangeCount > 0) {
-      var range = selection.getRangeAt(0);
-      // range.insertNode(document.createTextNode(clipboardData)); // Insert the modified content
-    }
-  }
+  
+  document.execCommand("insertHTML", false, clipboardData);
+  
+  // // Insert the modified clipboard content into the current selection or focused input field
+  // if (window.getSelection) {
+  //   // For modern browsers that support Selection API
+  //   var selection = window.getSelection();
+  //   if (selection.rangeCount > 0) {
+  //     var range = selection.getRangeAt(0);
+  //     // range.insertNode(document.createTextNode(clipboardData)); // Insert the modified content
+  //   }
+  // }
 });
 
 function removeStringBeforeCursor(stringToRemove) {
