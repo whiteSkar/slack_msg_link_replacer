@@ -5,6 +5,9 @@ document.addEventListener('paste', function(event) {
 
   // Get the clipboard data
   var clipboardData = (event.clipboardData || window.clipboardData).getData('text');
+  if (!clipboardContent.includes('archives')) {
+    return
+  }
 
   console.warn("whiteSkar - original clipboardData", clipboardData);
 
