@@ -4,3 +4,9 @@ chrome.action.onClicked.addListener(function(tab) {
   console.warn("whiteSkar - button Clicked");
   chrome.tabs.sendMessage(tab.id, { action: 'replaceText' });
 });
+// chrome.action.onClicked.addListener((tab) => {
+//   chrome.scripting.executeScript({
+//     target: {tabId: tab.id},
+//     files: ['content.js']
+//   });
+// });
