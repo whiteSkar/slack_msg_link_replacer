@@ -7,7 +7,7 @@ document.addEventListener('paste', function(event) {
   }
 
   // Prevent the default paste behavior
-  event.preventDefault();
+  // event.preventDefault();
 
   console.warn("whiteSkar - original clipboardData", clipboardData);
 
@@ -21,16 +21,6 @@ document.addEventListener('paste', function(event) {
   console.warn("whiteSkar - replaced content", clipboardData);
   
   document.execCommand("insertHTML", false, clipboardData);
-  
-  // // Insert the modified clipboard content into the current selection or focused input field
-  // if (window.getSelection) {
-  //   // For modern browsers that support Selection API
-  //   var selection = window.getSelection();
-  //   if (selection.rangeCount > 0) {
-  //     var range = selection.getRangeAt(0);
-  //     // range.insertNode(document.createTextNode(clipboardData)); // Insert the modified content
-  //   }
-  // }
 });
 
 function removeStringBeforeCursor(stringToRemove) {
