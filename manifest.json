@@ -4,7 +4,9 @@
   "description": "Extension that will replace the word 'archives' to 'messages', when the extension button is clicked, for texts in editable fields. Only work on some.. Tested on slack message field and Chat gpt text field. Does not work on Google Docs.",
   "version": "1.0",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "clipboardRead",
+    "clipboardPaste"
   ],
   "background": {
     "service_worker": "background.js"
