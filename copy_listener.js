@@ -1,7 +1,10 @@
+// Flag to track whether execCommand('paste') has been called
+var copyExecuted = false;
+
 // Function to handle clipboard copy event
 function handleClipboardEvent(event) {
   // Check if the event type is 'copy'
-  if (event.type === 'copy') {
+  if (event.type === 'copy' && !copyExecuted) {
     // Create a temporary input element
     var input = document.createElement('input');
     
@@ -15,7 +18,6 @@ function handleClipboardEvent(event) {
     // Focus the input element to ensure the document.execCommand('paste') works
     input.focus();
     
-    // Execute the paste command
     document.execCommand('paste');
 
     // Get the clipboard content from the input value
@@ -33,11 +35,14 @@ function handleClipboardEvent(event) {
       input.select();
       
       // Execute the copy command
+      copyExecuted = true;
       document.execCommand('copy');
     }
     
     // Remove the input from the document body
     document.body.removeChild(input);
+
+    copyExecuted = false;
   }
 }
 
