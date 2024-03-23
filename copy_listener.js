@@ -22,11 +22,17 @@ function replaceTextInClipboard() {
   input.focus();
 
   console.warn("whiteSkar - paste about to be executed");
+
+  try {
+     const text = await navigator.clipboard.readText()
+     input.value = text;
+     console.warn('Text pasted.');
+   } catch (error) {
+     console.warn('Failed to read clipboard', error);
+   }
   
-  const pasteResult = document.execCommand('paste')
-  console.warn('whiteSkar - pasteResult: ', pasteResult);
-  
-  console.warn("whiteSkar - paste executed");
+  // const pasteResult = document.execCommand('paste')
+  // console.warn('whiteSkar - pasteResult: ', pasteResult);
 
   // Get the clipboard content from the input value
   var clipboardContent = input.value;
