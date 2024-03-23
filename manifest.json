@@ -7,7 +7,7 @@
     "activeTab",
     "clipboardRead",
     "clipboardWrite",
-    "scripting",
+    "scripting"
   ],
   "background": {
     "service_worker": "background.js"
