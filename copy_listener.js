@@ -2,25 +2,29 @@
 document.addEventListener('paste', function(event) {
   // Prevent the default paste behavior
   event.preventDefault();
-  
+
   // Get the clipboard data
   var clipboardData = (event.clipboardData || window.clipboardData).getData('text');
-  
-  // Modify the clipboard content (replace 'archives' with 'messages', for example)
-  var modifiedClipboardData = clipboardData.replace('archives', 'messages');
-  
+
+  // Remove the string from the document that was just pasted
+  var activeElement = document.activeElement;
+  var selectionStart = activeElement.selectionStart;
+  var selectionEnd = activeElement.selectionEnd;
+  var textBeforePaste = activeElement.value.substring(0, selectionStart);
+  var textAfterPaste = activeElement.value.substring(selectionEnd);
+  activeElement.value = textBeforePaste + textAfterPaste;
+
+  // Replace the word 'archives' with 'messages' in the clipboard data
+  clipboardData = clipboardData.replace('archives', 'messages');
+
   // Insert the modified clipboard content into the current selection or focused input field
   if (window.getSelection) {
     // For modern browsers that support Selection API
     var selection = window.getSelection();
     if (selection.rangeCount > 0) {
-      // Replace the selected text with the modified clipboard content
-      selection.deleteFromDocument();
-      selection.getRangeAt(0).insertNode(document.createTextNode(modifiedClipboardData));
+      var range = selection.getRangeAt(0);
+      range.insertNode(document.createTextNode(clipboardData)); // Insert the modified content
     }
-  } else if (document.selection && document.selection.type != 'Control') {
-    // For older versions of Internet Explorer
-    document.selection.createRange().text = modifiedClipboardData;
   }
 });
 
