@@ -19,7 +19,6 @@ document.addEventListener('copy', async () => {
     // Execute the copy command
     console.warn("whiteSkar - copy about to be executed with contet", clipboardContent);
     await navigator.clipboard.writeText(clipboardContent)
-    console.warn("whiteSkar - copy executed - copyResult", copyResult);
   }
 });
                              
