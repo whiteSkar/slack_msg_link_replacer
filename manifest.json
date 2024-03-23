@@ -6,7 +6,7 @@
   "permissions": [
     "activeTab",
     "clipboardRead",
-    "clipboardPaste"
+    "clipboardWrite"
   ],
   "background": {
     "service_worker": "background.js"
