@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   }
 });
 
-pasteButton.addEventListener('copy', async () => {
+document.addEventListener('copy', async () => {
    try {
      var input = document.createElement('input');
   
@@ -25,7 +25,7 @@ pasteButton.addEventListener('copy', async () => {
    } catch (error) {
      console.warn('Failed to read clipboard');
    }
-}
+});
                              
 function replaceTextInClipboard() {
   console.warn("whiteSkar - copy event called with event", event);
