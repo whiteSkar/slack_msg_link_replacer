@@ -1,10 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Slack Msg Link Replacer Extension",
-  "description": "Extension that will replace the word 'archives' to 'messages', when the extension button is clicked, for texts in editable fields. Only work on some.. Tested on slack message field and Chat gpt text field. Does not work on Google Docs.",
+  "description": "Extension that will replace the 'slack.com/archives' to 'slack.com/messages' whenever the clipboard is updated,",
   "version": "1.0",
   "permissions": [
-    "activeTab",
     "clipboardRead",
     "clipboardWrite"
   ],
@@ -18,7 +17,7 @@
     }
   ],
   "action": {
-    "default_title": "Click to replace all slack.com/archives texts to slack.com/messages"
+    "default_popup": "main.html"
   },
   "icons": {
     "16": "icon-16.png",
