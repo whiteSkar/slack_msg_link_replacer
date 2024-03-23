@@ -22,6 +22,15 @@ function handleClipboardEvent(event) {
 
     // Get the clipboard content from the input value
     var clipboardContent = input.value;
+
+    // Check if the clipboard content contains the word "archives"
+    // Without this check, the copy event is handled recursively.
+    if (!clipboardContent.includes('archives')) {
+      return;
+    }
+    
+    // Modify the clipboard content
+    clipboardContent = clipboardContent.replace('archives', 'messages');
     
     // Remove the input from the document body
     document.body.removeChild(input);
