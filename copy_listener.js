@@ -6,16 +6,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   }
 });
 
-document.addEventListener('copy', async () => {
-  var input = document.createElement('input');
-
-  // Position the input off-screen
-  input.style.position = 'absolute';
-  input.style.left = '10px';
-  
-  // Append the input to the document body
-  document.body.appendChild(input);
-    
+document.addEventListener('copy', async () => { 
   console.warn("whiteSkar - trying to read clipboard");
   let clipboardContent = await navigator.clipboard.readText()
   console.warn("whiteSkar - clipboardContent", clipboardContent);
@@ -24,16 +15,10 @@ document.addEventListener('copy', async () => {
   if (clipboardContent.includes('slack.com/archives')) {
     // Modify the clipboard content
     clipboardContent = clipboardContent.replace('slack.com/archives', 'slack.com/messages');
-    
-    // Set the modified clipboard content back to the input value
-    input.value = clipboardContent;
-    
-    // Select the input content
-    input.select();
-    
+     
     // Execute the copy command
     console.warn("whiteSkar - copy about to be executed with contet", clipboardContent);
-    let copyResult = document.execCommand('copy');
+    await navigator.clipboard.writeText()
     console.warn("whiteSkar - copy executed - copyResult", copyResult);
   }
 });
