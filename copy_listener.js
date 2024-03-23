@@ -1,13 +1,13 @@
 // Add event listener for the paste event on the document
 document.addEventListener('paste', function(event) {
-  // Prevent the default paste behavior
-  event.preventDefault();
-
   // Get the clipboard data
   var clipboardData = (event.clipboardData || window.clipboardData).getData('text');
   if (!clipboardData.includes('archives')) {
     return
   }
+
+  // Prevent the default paste behavior
+  event.preventDefault();
 
   console.warn("whiteSkar - original clipboardData", clipboardData);
 
