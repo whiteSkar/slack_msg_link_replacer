@@ -26,7 +26,7 @@ document.addEventListener('paste', function(event) {
 function removeStringBeforeCursor(stringToRemove) {
   // Get the currently focused element
   var focusedElement = document.activeElement;
-
+  
   console.warn("whiteSkar - removeStringBeforeCursor - focusedElement", focusedElement);
 
   // Ensure the focused element is an input or textarea
@@ -62,7 +62,8 @@ function removeStringBeforeCursor(stringToRemove) {
     // Get the inner text and selection range
     var textContent = focusedElement.innerText;
     var selection = window.getSelection();
-    var cursorPosition = selection.focusOffset;
+    var range = selection.getRangeAt(0).cloneRange();
+    var cursorPosition = selection.focusOffset;   
 
     console.warn("whiteSkar - textContent", textContent);
     console.warn("whiteSkar - selection", selection);
@@ -80,7 +81,7 @@ function removeStringBeforeCursor(stringToRemove) {
       focusedElement.innerText = modifiedText;
 
       // Adjust the selection range to maintain cursor position
-      var range = document.createRange();
+      // var range = document.createRange();
       range.setStart(selection.focusNode, startIndex);
       range.collapse(true);
       selection.removeAllRanges();
