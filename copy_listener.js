@@ -1,3 +1,9 @@
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+  if (message.action === 'replaceText') {
+    replaceTextInEditableElements();
+  }
+});
+
 // Function to find and replace text in editable elements
 function replaceTextInEditableElements() {
   // Get all elements in the document
