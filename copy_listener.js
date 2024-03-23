@@ -7,12 +7,7 @@ document.addEventListener('paste', function(event) {
   var clipboardData = (event.clipboardData || window.clipboardData).getData('text');
 
   // Remove the string from the document that was just pasted
-  var activeElement = document.activeElement;
-  var selectionStart = activeElement.selectionStart;
-  var selectionEnd = activeElement.selectionEnd;
-  var textBeforePaste = activeElement.value.substring(0, selectionStart);
-  var textAfterPaste = activeElement.value.substring(selectionEnd);
-  activeElement.value = textBeforePaste + textAfterPaste;
+  removeStringBeforeCursor(clipboardData);
 
   // Replace the word 'archives' with 'messages' in the clipboard data
   clipboardData = clipboardData.replace('archives', 'messages');
@@ -27,6 +22,39 @@ document.addEventListener('paste', function(event) {
     }
   }
 });
+
+function removeStringBeforeCursor(stringToRemove) {
+  // Get the currently focused element
+  var focusedElement = document.activeElement;
+
+  // Ensure the focused element is an input or textarea
+  if (focusedElement.tagName === 'INPUT' || focusedElement.tagName === 'TEXTAREA') {
+    // Get the current cursor position
+    var cursorPosition = focusedElement.selectionStart;
+
+    // Get the current text content of the focused element
+    var textContent = focusedElement.value;
+
+    // Find the start index of the nearest occurrence of the string before the cursor
+    var startIndex = textContent.lastIndexOf(stringToRemove, cursorPosition - 1);
+
+    // Check if the string is found before the cursor
+    if (startIndex !== -1 && startIndex + stringToRemove.length === cursorPosition) {
+      // Remove the string from the text content before the cursor
+      var modifiedText = textContent.substring(0, startIndex) + textContent.substring(cursorPosition);
+
+      // Update the value of the focused element with the modified text content
+      focusedElement.value = modifiedText;
+
+      // Set the cursor position after the modified text
+      focusedElement.setSelectionRange(startIndex, startIndex);
+    }
+  }
+}
+
+// Example usage:
+// Call the function with the string you want to remove
+removeStringBeforeCursor('specificString');
 
 // // Function to handle clipboard copy event
 // function handleClipboardEvent(event) {
