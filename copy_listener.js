@@ -12,7 +12,7 @@ document.addEventListener('paste', function(event) {
   console.warn("whiteSkar - original clipboardData", clipboardData);
 
   // Remove the string from the document that was just pasted
-  // removeStringBeforeCursor(clipboardData);
+  removeStringBeforeCursor(clipboardData);
 
   console.warn("whiteSkar - removed string");
   
