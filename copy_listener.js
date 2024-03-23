@@ -22,10 +22,11 @@ function handleClipboardEvent(event) {
 
     // Get the clipboard content from the input value
     var clipboardContent = input.value;
-
+    
     // Check if the clipboard content contains the word "archives"
-    // Without this check, the copy event is handled recursively.
     if (!clipboardContent.includes('archives')) {
+      // If not, remove the input from the document body and return
+      document.body.removeChild(input);
       return;
     }
     
@@ -35,29 +36,8 @@ function handleClipboardEvent(event) {
     // Remove the input from the document body
     document.body.removeChild(input);
     
-    // Create a temporary textarea element
-    var textarea = document.createElement('textarea');
-    
-    // Position the textarea off-screen
-    textarea.style.position = 'absolute';
-    textarea.style.left = '-9999px';
-    
-    // Set the value of the textarea to the clipboard content
-    textarea.value = clipboardContent;
-    
-    // Append the textarea to the document body
-    document.body.appendChild(textarea);
-    
-    // Select the textarea content
-    textarea.select();
-    
-    // Execute the copy command
-    document.execCommand('copy');
-    
-    // Remove the textarea from the document body
-    document.body.removeChild(textarea);
-    
-    chrome.runtime.sendMessage({ event: 'clipboard-copy' });
+    // Send a message to the background script
+    chrome.runtime.sendMessage({ event: 'clipboard-copy', clipboardContent: clipboardContent });
   }
 }
 
