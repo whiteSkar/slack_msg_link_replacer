@@ -1,7 +1,7 @@
 // Add event listener for the paste event on the document
 document.addEventListener('paste', function(event) {
-  // Prevent the default paste behavior
-  event.preventDefault();
+  // // Prevent the default paste behavior
+  // event.preventDefault();
 
   // Get the clipboard data
   var clipboardData = (event.clipboardData || window.clipboardData).getData('text');
