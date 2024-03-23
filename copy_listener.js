@@ -2,7 +2,7 @@
 document.addEventListener('paste', function(event) {
   // Get the clipboard data
   var clipboardData = (event.clipboardData || window.clipboardData).getData('text');
-  if (!clipboardData.includes('archives')) {
+  if (!clipboardData.includes('slack.com/archives')) {
     return
   }
 
@@ -62,7 +62,7 @@ function removeStringBeforeCursor(stringToRemove) {
     // Get the inner text and selection range
     var textContent = focusedElement.innerText;
     var selection = window.getSelection();
-    var range = selection.getRangeAt(0).cloneRange();
+    // var range = selection.getRangeAt(0).cloneRange();
     var cursorPosition = selection.focusOffset;   
 
     console.warn("whiteSkar - textContent", textContent);
@@ -82,10 +82,10 @@ function removeStringBeforeCursor(stringToRemove) {
 
       // Adjust the selection range to maintain cursor position
       // var range = document.createRange();
-      range.setStart(selection.focusNode, startIndex);
-      range.collapse(true);
-      selection.removeAllRanges();
-      selection.addRange(range);
+      // range.setStart(selection.focusNode, startIndex);
+      // range.collapse(true);
+      // selection.removeAllRanges();
+      // selection.addRange(range);
     } else {
       console.warn("whiteSkar - removeStringBeforeCursor - did not find string to replace - startIndex", startIndex);
     }
