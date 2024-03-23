@@ -56,6 +56,34 @@ function removeStringBeforeCursor(stringToRemove) {
     } else{
       console.warn("whiteSkar - removeStringBeforeCursor - did not find string to replace");
     }
+  } else if (focusedElement && focusedElement.hasAttribute('contenteditable')) {
+    console.warn("whiteSkar - focusedElement is contenteditable");
+    
+    // Get the inner text and selection range
+    var textContent = focusedElement.innerText;
+    var selection = window.getSelection();
+    var cursorPosition = selection.focusOffset;
+
+    // Find the start index of the nearest occurrence of the string before the cursor
+    var startIndex = textContent.lastIndexOf(stringToRemove, cursorPosition - stringToRemove.length);
+
+    // Check if the string is found before the cursor
+    if (startIndex !== -1 && startIndex + stringToRemove.length === cursorPosition) {
+      // Remove the string from the text content before the cursor
+      var modifiedText = textContent.substring(0, startIndex) + textContent.substring(cursorPosition);
+
+      // Update the inner text of the focused element
+      focusedElement.innerText = modifiedText;
+
+      // Adjust the selection range to maintain cursor position
+      var range = document.createRange();
+      range.setStart(selection.focusNode, startIndex);
+      range.collapse(true);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    } else {
+      console.warn("whiteSkar - removeStringBeforeCursor - did not find string to replace");
+    }
   }
 }
 
