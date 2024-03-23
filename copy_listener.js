@@ -15,10 +15,10 @@ document.addEventListener('copy', async () => {
   
   // Append the input to the document body
   document.body.appendChild(input);
-  // Focus the input element to ensure the document.execCommand('paste') works
-  input.focus();
     
+  console.warn("whiteSkar - trying to read clipboard");
   let clipboardContent = await navigator.clipboard.readText()
+  console.warn("whiteSkar - clipboardContent", clipboardContent);
   
   // Check if the clipboard content contains the word "archives"
   if (clipboardContent.includes('slack.com/archives')) {
@@ -33,8 +33,8 @@ document.addEventListener('copy', async () => {
     
     // Execute the copy command
     console.warn("whiteSkar - copy about to be executed with contet", clipboardContent);
-    document.execCommand('copy');
-    console.warn("whiteSkar - copy executed");
+    let copyResult = document.execCommand('copy');
+    console.warn("whiteSkar - copy executed - copyResult", copyResult);
   }
 });
                              
