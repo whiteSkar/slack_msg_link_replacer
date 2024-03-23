@@ -1,7 +1,6 @@
-// Listen for messages from the background script
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  // Check if the message event is 'clipboard-copy'
-  if (message.event === 'clipboard-copy') {
-
-  }
+// Listen for clicks on the extension button
+chrome.action.onClicked.addListener(function(tab) {
+  // Send a message to the content script to invoke the replaceTextInEditableElements function
+  console.warn("whiteSkar - button Clicked");
+  chrome.tabs.sendMessage(tab.id, { action: 'replaceText' });
 });
