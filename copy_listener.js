@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 });
 
 function replaceTextInClipboard() {
-  console.log("whiteSkar - copy event called with event", event);
+  console.warn("whiteSkar - copy event called with event", event);
   // Create a temporary input element
   var input = document.createElement('input');
   
@@ -21,14 +21,16 @@ function replaceTextInClipboard() {
   // Focus the input element to ensure the document.execCommand('paste') works
   input.focus();
 
-  console.log("whiteSkar - paste about to be executed");
+  console.warn("whiteSkar - paste about to be executed");
   
-  document.execCommand('paste');
-  console.log("whiteSkar - paste executed");
+  const pasteResult = document.execCommand('paste')
+  console.warn('whiteSkar - pasteResult: ', pasteResult);
+  
+  console.warn("whiteSkar - paste executed");
 
   // Get the clipboard content from the input value
   var clipboardContent = input.value;
-  console.log("whiteSkar - cliipboard content is", clipboardContent);
+  console.warn("whiteSkar - cliipboard content is", clipboardContent);
   
   // Check if the clipboard content contains the word "archives"
   if (clipboardContent.includes('slack.com/archives')) {
@@ -42,9 +44,9 @@ function replaceTextInClipboard() {
     input.select();
     
     // Execute the copy command
-    console.log("whiteSkar - copy about to be executed with contet", clipboardContent);
+    console.warn("whiteSkar - copy about to be executed with contet", clipboardContent);
     document.execCommand('copy');
-    console.log("whiteSkar - copy executed");
+    console.warn("whiteSkar - copy executed");
   }
   
   // Remove the input from the document body
