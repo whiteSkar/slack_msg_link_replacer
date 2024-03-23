@@ -54,7 +54,7 @@ function removeStringBeforeCursor(stringToRemove) {
       // Set the cursor position after the modified text
       focusedElement.setSelectionRange(startIndex, startIndex);
     } else{
-      console.warn("whiteSkar - removeStringBeforeCursor - did not find string to replace");
+      console.warn("whiteSkar - removeStringBeforeCursor - did not find string to replace - startIndex", startIndex);
     }
   } else if (focusedElement && focusedElement.hasAttribute('contenteditable')) {
     console.warn("whiteSkar - focusedElement is contenteditable");
@@ -64,6 +64,10 @@ function removeStringBeforeCursor(stringToRemove) {
     var selection = window.getSelection();
     var cursorPosition = selection.focusOffset;
 
+    console.warn("whiteSkar - textContent", textContent);
+    console.warn("whiteSkar - selection", selection);
+    console.warn("whiteSkar - cursorPosition", cursorPosition);
+    
     // Find the start index of the nearest occurrence of the string before the cursor
     var startIndex = textContent.lastIndexOf(stringToRemove, cursorPosition - stringToRemove.length);
 
@@ -82,7 +86,7 @@ function removeStringBeforeCursor(stringToRemove) {
       selection.removeAllRanges();
       selection.addRange(range);
     } else {
-      console.warn("whiteSkar - removeStringBeforeCursor - did not find string to replace");
+      console.warn("whiteSkar - removeStringBeforeCursor - did not find string to replace - startIndex", startIndex);
     }
   }
 }
