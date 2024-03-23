@@ -48,7 +48,7 @@ function replaceTextInClipboard() {
   }
   
   // Remove the input from the document body
-  document.body.removeChild(input);
+  // document.body.removeChild(input);
 }
 
 // Function to find and replace text in editable elements
