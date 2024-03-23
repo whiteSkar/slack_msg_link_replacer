@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Slack Msg Link Replacer Extension",
-  "description": "Extension that will replace the word 'archives' to 'messages', when the extension button is clicked, for texts in editable fields. Only work on some.. Tested on slack message field. Does not work on Google Docs.",
+  "description": "Extension that will replace the word 'archives' to 'messages', when the extension button is clicked, for texts in editable fields. Only work on some.. Tested on slack message field and Chat gpt text field. Does not work on Google Docs.",
   "version": "1.0",
   "permissions": [
     "activeTab"
