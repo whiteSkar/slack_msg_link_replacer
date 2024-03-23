@@ -6,8 +6,9 @@
 //   }
 // });
 
-document.addEventListener('copy', async () => { 
+document.addEventListener('copy', async () => {
   let clipboardContent = await navigator.clipboard.readText()
+  console.warn("whiteSkar - copy event - clipboardContent", clipboardContent);
   if (clipboardContent.includes('slack.com/archives')) {
     clipboardContent = clipboardContent.replace('slack.com/archives', 'slack.com/messages');
     await navigator.clipboard.writeText(clipboardContent)
