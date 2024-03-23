@@ -1,24 +1,56 @@
-// Function to handle clipboard copy event
-function handleCopyEvent(event) {
-  // Modify the clipboard content as needed (for example, replace 'archives' with 'messages')
-  var clipboardData = event.clipboardData || window.clipboardData;
-  var modifiedText = clipboardData.getData('text/plain').replace('archives', 'messages');
-  
-  // Set the modified text back to the clipboard
-  clipboardData.setData('text/plain', modifiedText);
+function handleClipboardEvent(event) {
+  // Check if the event type is 'copy'
+  if (event.type === 'copy') {
+    // Send a message to the background script indicating a copy event
+    console.warn("whiteSkar - handling clipboard event");
+
+    // Create a temporary input element
+    var input = document.createElement('input');
+    
+    // Position the input off-screen
+    input.style.position = 'absolute';
+    input.style.left = '-9999px';
+    
+    // Append the input to the document body
+    document.body.appendChild(input);
+
+    // Focus the input element to ensure the document.execCommand('paste') works
+    input.focus();
+    
+    // Execute the paste command
+    document.execCommand('paste');
+
+    // Get the clipboard content from the input value
+    var clipboardContent = input.value;
+    
+    // Remove the input from the document body
+    document.body.removeChild(input);
+    
+    // Create a temporary textarea element
+    var textarea = document.createElement('textarea');
+    
+    // Position the textarea off-screen
+    textarea.style.position = 'absolute';
+    textarea.style.left = '-9999px';
+    
+    // Set the value of the textarea to the clipboard content
+    textarea.value = clipboardContent;
+    
+    // Append the textarea to the document body
+    document.body.appendChild(textarea);
+    
+    // Select the textarea content
+    textarea.select();
+    
+    // Execute the copy command
+    document.execCommand('copy');
+    
+    // Remove the textarea from the document body
+    document.body.removeChild(textarea);
+    
+    chrome.runtime.sendMessage({ event: 'clipboard-copy' });
+  }
 }
 
-// Listen for copy events
-document.addEventListener('copy', handleCopyEvent);
-
-// function handleClipboardEvent(event) {
-//   // Check if the event type is 'copy'
-//   if (event.type === 'copy') {
-//     // Send a message to the background script indicating a copy event
-//     console.warn("whiteSkar - handling clipboard event");
-//     chrome.runtime.sendMessage({ event: 'clipboard-copy' });
-//   }
-// }
-
-// // Listen for clipboard events
-// document.addEventListener('copy', handleClipboardEvent);
+// Listen for clipboard events
+document.addEventListener('copy', handleClipboardEvent);
