@@ -13,7 +13,7 @@ function replaceTextInClipboard() {
   
   // Position the input off-screen
   input.style.position = 'absolute';
-  input.style.left = '-9999px';
+  input.style.left = '10px';
   
   // Append the input to the document body
   document.body.appendChild(input);
