@@ -1,16 +1,21 @@
 // Add event listener for the paste event on the document
 document.addEventListener('paste', function(event) {
-  // // Prevent the default paste behavior
-  // event.preventDefault();
+  // Prevent the default paste behavior
+  event.preventDefault();
 
   // Get the clipboard data
   var clipboardData = (event.clipboardData || window.clipboardData).getData('text');
 
+  console.warn("whiteSkar - original clipboardData", clipboardData);
+
   // Remove the string from the document that was just pasted
   removeStringBeforeCursor(clipboardData);
 
+  console.warn("whiteSkar - removed string");
+  
   // Replace the word 'archives' with 'messages' in the clipboard data
   clipboardData = clipboardData.replace('archives', 'messages');
+  console.warn("whiteSkar - replaced content", clipboardData);
 
   // Insert the modified clipboard content into the current selection or focused input field
   if (window.getSelection) {
@@ -18,7 +23,7 @@ document.addEventListener('paste', function(event) {
     var selection = window.getSelection();
     if (selection.rangeCount > 0) {
       var range = selection.getRangeAt(0);
-      range.insertNode(document.createTextNode(clipboardData)); // Insert the modified content
+      // range.insertNode(document.createTextNode(clipboardData)); // Insert the modified content
     }
   }
 });
