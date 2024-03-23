@@ -1,9 +1,7 @@
+// Function to handle clipboard copy event
 function handleClipboardEvent(event) {
   // Check if the event type is 'copy'
   if (event.type === 'copy') {
-    // Send a message to the background script indicating a copy event
-    console.warn("whiteSkar - handling clipboard event");
-
     // Create a temporary input element
     var input = document.createElement('input');
     
@@ -24,22 +22,24 @@ function handleClipboardEvent(event) {
     var clipboardContent = input.value;
     
     // Check if the clipboard content contains the word "archives"
-    if (!clipboardContent.includes('archives')) {
-      // If not, remove the input from the document body and return
-      document.body.removeChild(input);
-      return;
+    if (clipboardContent.includes('archives')) {
+      // Modify the clipboard content
+      clipboardContent = clipboardContent.replace('archives', 'messages');
+      
+      // Set the modified clipboard content back to the input value
+      input.value = clipboardContent;
+      
+      // Select the input content
+      input.select();
+      
+      // Execute the copy command
+      document.execCommand('copy');
     }
-    
-    // Modify the clipboard content
-    clipboardContent = clipboardContent.replace('archives', 'messages');
     
     // Remove the input from the document body
     document.body.removeChild(input);
-    
-    // Send a message to the background script
-    chrome.runtime.sendMessage({ event: 'clipboard-copy', clipboardContent: clipboardContent });
   }
 }
 
-// Listen for clipboard events
+// Listen for clipboard events in the content script
 document.addEventListener('copy', handleClipboardEvent);
