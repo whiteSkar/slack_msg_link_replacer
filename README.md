@@ -9,9 +9,11 @@ It's freaking annoying to always having to tap on the link that says "open this 
 
 Using the URL with "messages" will directly open the link in the browser, making our life so much better.
 
-Having this extension will automatically replace the slack.com/archives/some_msg_id to slack.com/messages/some_msg_id when you use the "Copy link" button
+Having this extension will automatically replace the slack.com/archives/some_msg_id to slack.com/messages/some_msg_id in your clipboard when you use the "Copy link" button
 
 ![image](https://github.com/whiteSkar/slack_msg_link_replacer/assets/2031517/e6d631fe-087c-4df0-a6ad-8e6d038c2420).
+
+That way, when you paste the link (eg. sending the link to someone else, having links to messages in a doc for reference, and etc), you will make the life of the people who are using your links better.
 
 If you copy from other places such as the Slack's message input field
 
