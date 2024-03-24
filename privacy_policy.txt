@@ -1,0 +1,1 @@
+The extension does not communicate with anything other than your clipboard. Nothing goes out nor saved. Privacy is 100% yours.
