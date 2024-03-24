@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Slack Msg Link Replacer Extension",
-  "description": "Extension that will replace the 'slack.com/archives' to 'slack.com/messages' whenever the clipboard is updated,",
+  "description": "Extension that will replace the 'slack.com/archives' to 'slack.com/messages' automatically when you use the "Copy Link" button on Slack messages. If the automatic replacement does not happen, press the extension button to replace it for you.",
   "version": "1.0",
   "permissions": [
     "clipboardRead",
