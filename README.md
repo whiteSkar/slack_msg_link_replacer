@@ -4,6 +4,7 @@ When copying links to slack messages, the copied URL is structured this way: sla
 This extension will replace the word "archives" to "messages".
 
 When you click on the link with "archives" it opens a new tab that asks me if I want to open the link in the Slack desktop app. ![image](https://github.com/whiteSkar/slack_msg_link_replacer/assets/2031517/3ebd5db3-1690-4d41-bf2d-c5a1ed7d9660)
+
 It's freaking annoying to always having to tap on the link that says "open this link in your browser" to stay in the browser.
 
 Using the URL with "messages" will directly open the link in the browser, making our life so much better.
