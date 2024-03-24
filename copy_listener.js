@@ -7,7 +7,9 @@ document.addEventListener('copy', async () => {
 // So have a backup way to handle that case which is to press the extension button.
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   if (message.action === 'replaceClipboard') {
-    await replaceTextInClipboard();
+    (async () => {
+      await replaceTextInClipboard();
+    })();
   }
 });
 
