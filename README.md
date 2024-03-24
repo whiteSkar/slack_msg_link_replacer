@@ -14,6 +14,7 @@ Having this extension will automatically replace the slack.com/archives/some_msg
 ![image](https://github.com/whiteSkar/slack_msg_link_replacer/assets/2031517/e6d631fe-087c-4df0-a6ad-8e6d038c2420).
 
 If you copy from other places such as the Slack's message input field
+
 ![image](https://github.com/whiteSkar/slack_msg_link_replacer/assets/2031517/7c273934-eb0c-425c-9832-7d8c87d20f24)
 , 
 the extension may not replace the text automatically. In that case, press the extension button to have it replace the text for you.
