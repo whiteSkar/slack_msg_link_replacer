@@ -17,7 +17,7 @@
     }
   ],
   "action": {
-    "default_popup": "main.html"
+    "default_title": "Click to replace the text in clipboard"
   },
   "icons": {
     "16": "icon-16.png",
