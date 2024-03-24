@@ -21,3 +21,9 @@ If you copy from other places such as the Slack's message input field
 , 
 
 the extension may not replace the text automatically. In that case, press the extension button to have it replace the text for you.
+
+**Demo**
+
+
+https://github.com/whiteSkar/slack_msg_link_replacer/assets/2031517/f3535e26-80f5-41e2-964e-7340a9aa88c9
+
