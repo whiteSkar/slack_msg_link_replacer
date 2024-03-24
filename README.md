@@ -17,4 +17,5 @@ If you copy from other places such as the Slack's message input field
 
 ![image](https://github.com/whiteSkar/slack_msg_link_replacer/assets/2031517/7c273934-eb0c-425c-9832-7d8c87d20f24)
 , 
+
 the extension may not replace the text automatically. In that case, press the extension button to have it replace the text for you.
